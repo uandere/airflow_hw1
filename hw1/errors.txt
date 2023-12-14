@@ -1,0 +1,35 @@
+[2023-11-25 16:52:52 +0200] [10755] [INFO] Starting gunicorn 21.2.0
+[2023-11-25 16:52:52 +0200] [10755] [ERROR] Connection in use: ('::', 8793)
+[2023-11-25 16:52:52 +0200] [10755] [ERROR] Retrying in 1 second.
+[2023-11-25 16:52:53 +0200] [10755] [ERROR] Connection in use: ('::', 8793)
+[2023-11-25 16:52:53 +0200] [10755] [ERROR] Retrying in 1 second.
+[2023-11-25 16:52:54 +0200] [10755] [ERROR] Connection in use: ('::', 8793)
+[2023-11-25 16:52:54 +0200] [10755] [ERROR] Retrying in 1 second.
+[2023-11-25 16:52:55 +0200] [10755] [ERROR] Connection in use: ('::', 8793)
+[2023-11-25 16:52:55 +0200] [10755] [ERROR] Retrying in 1 second.
+[2023-11-25 16:52:56 +0200] [10755] [ERROR] Connection in use: ('::', 8793)
+[2023-11-25 16:52:56 +0200] [10755] [ERROR] Retrying in 1 second.
+[2023-11-25 16:52:57 +0200] [10755] [ERROR] Can't connect to ('::', 8793)
+Process SpawnProcess-2:
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/nazar/.local/share/virtualenvs/hw1-xDjA4hSO/lib/python3.11/site-packages/airflow/dag_processing/manager.py", line 258, in _run_processor_manager
+    processor_manager.start()
+  File "/Users/nazar/.local/share/virtualenvs/hw1-xDjA4hSO/lib/python3.11/site-packages/airflow/dag_processing/manager.py", line 493, in start
+    return self._run_parsing_loop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nazar/.local/share/virtualenvs/hw1-xDjA4hSO/lib/python3.11/site-packages/airflow/dag_processing/manager.py", line 579, in _run_parsing_loop
+    agent_signal = self._direct_scheduler_conn.recv()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.6_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError

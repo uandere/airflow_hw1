@@ -1,0 +1,13 @@
+[2023-12-14T00:50:21.568+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.scrape_images manual__2023-12-14T00:50:14.203341+00:00 [queued]>
+[2023-12-14T00:50:21.572+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.scrape_images manual__2023-12-14T00:50:14.203341+00:00 [queued]>
+[2023-12-14T00:50:21.572+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-12-14T00:50:21.577+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): scrape_images> on 2023-12-14 00:50:14.203341+00:00
+[2023-12-14T00:50:21.581+0000] {standard_task_runner.py:57} INFO - Started process 376 to run task
+[2023-12-14T00:50:21.583+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'scrape_images', 'manual__2023-12-14T00:50:14.203341+00:00', '--job-id', '190', '--raw', '--subdir', 'DAGS_FOLDER/my_dag.py', '--cfg-path', '/tmp/tmp_gsj8lio']
+[2023-12-14T00:50:21.585+0000] {standard_task_runner.py:85} INFO - Job 190: Subtask scrape_images
+[2023-12-14T00:50:21.605+0000] {task_command.py:416} INFO - Running <TaskInstance: my_dag.scrape_images manual__2023-12-14T00:50:14.203341+00:00 [running]> on host 091c42b107c6
+[2023-12-14T00:50:21.637+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='my_dag' AIRFLOW_CTX_TASK_ID='scrape_images' AIRFLOW_CTX_EXECUTION_DATE='2023-12-14T00:50:14.203341+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-14T00:50:14.203341+00:00'
+[2023-12-14T00:50:22.587+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-12-14T00:50:22.592+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=my_dag, task_id=scrape_images, execution_date=20231214T005014, start_date=20231214T005021, end_date=20231214T005022
+[2023-12-14T00:50:22.604+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-14T00:50:22.616+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  airflow-scheduler:
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=false
+
+  airflow-webserver:
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=false
+  
+  airflow-worker:
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=false
+
+  custom-database:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: homework2
+    volumes:
+      - custom-db-volume:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+volumes:
+  custom-db-volume:

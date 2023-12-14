@@ -1,0 +1,28 @@
+[2023-12-14T00:25:16.770+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.create_domains_info_table manual__2023-12-13T23:15:37.822912+00:00 [queued]>
+[2023-12-14T00:25:16.776+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.create_domains_info_table manual__2023-12-13T23:15:37.822912+00:00 [queued]>
+[2023-12-14T00:25:16.776+0000] {taskinstance.py:1361} INFO - Starting attempt 3 of 3
+[2023-12-14T00:25:16.782+0000] {taskinstance.py:1382} INFO - Executing <Task(PostgresOperator): create_domains_info_table> on 2023-12-13 23:15:37.822912+00:00
+[2023-12-14T00:25:16.790+0000] {standard_task_runner.py:57} INFO - Started process 1206 to run task
+[2023-12-14T00:25:16.795+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'create_domains_info_table', 'manual__2023-12-13T23:15:37.822912+00:00', '--job-id', '142', '--raw', '--subdir', 'DAGS_FOLDER/my_dag.py', '--cfg-path', '/tmp/tmp4ac8ssek']
+[2023-12-14T00:25:16.797+0000] {standard_task_runner.py:85} INFO - Job 142: Subtask create_domains_info_table
+[2023-12-14T00:25:16.823+0000] {task_command.py:416} INFO - Running <TaskInstance: my_dag.create_domains_info_table manual__2023-12-13T23:15:37.822912+00:00 [running]> on host dde03b621bd8
+[2023-12-14T00:25:16.856+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='my_dag' AIRFLOW_CTX_TASK_ID='create_domains_info_table' AIRFLOW_CTX_EXECUTION_DATE='2023-12-13T23:15:37.822912+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-13T23:15:37.822912+00:00'
+[2023-12-14T00:25:16.857+0000] {sql.py:274} INFO - Executing: 
+        CREATE TABLE IF NOT EXISTS DomainsInfo (
+            id  SERIAL PRIMARY KEY,
+            domain VARCHAR(128),
+            info TEXT
+        );
+        
+[2023-12-14T00:25:16.864+0000] {base.py:73} INFO - Using connection ID 'postgres_hw2' for task execution.
+[2023-12-14T00:25:16.870+0000] {base.py:73} INFO - Using connection ID 'postgres_hw2' for task execution.
+[2023-12-14T00:25:16.874+0000] {sql.py:418} INFO - Running statement: 
+        CREATE TABLE IF NOT EXISTS DomainsInfo (
+            id  SERIAL PRIMARY KEY,
+            domain VARCHAR(128),
+            info TEXT
+        );
+        , parameters: None
+[2023-12-14T00:25:16.881+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=my_dag, task_id=create_domains_info_table, execution_date=20231213T231537, start_date=20231214T002516, end_date=20231214T002516
+[2023-12-14T00:25:16.924+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-14T00:25:16.938+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check

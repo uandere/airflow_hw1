@@ -1,0 +1,24 @@
+[2023-12-14T00:20:45.493+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.perform_ocr manual__2023-12-13T23:36:49.021983+00:00 [queued]>
+[2023-12-14T00:20:45.497+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.perform_ocr manual__2023-12-13T23:36:49.021983+00:00 [queued]>
+[2023-12-14T00:20:45.497+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-12-14T00:20:45.505+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): perform_ocr> on 2023-12-13 23:36:49.021983+00:00
+[2023-12-14T00:20:45.512+0000] {standard_task_runner.py:57} INFO - Started process 421 to run task
+[2023-12-14T00:20:45.518+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'perform_ocr', 'manual__2023-12-13T23:36:49.021983+00:00', '--job-id', '124', '--raw', '--subdir', 'DAGS_FOLDER/my_dag.py', '--cfg-path', '/tmp/tmp74m57b5n']
+[2023-12-14T00:20:45.530+0000] {standard_task_runner.py:85} INFO - Job 124: Subtask perform_ocr
+[2023-12-14T00:20:45.599+0000] {task_command.py:416} INFO - Running <TaskInstance: my_dag.perform_ocr manual__2023-12-13T23:36:49.021983+00:00 [running]> on host dde03b621bd8
+[2023-12-14T00:20:45.653+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='my_dag' AIRFLOW_CTX_TASK_ID='perform_ocr' AIRFLOW_CTX_EXECUTION_DATE='2023-12-13T23:36:49.021983+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-13T23:36:49.021983+00:00'
+[2023-12-14T00:20:45.661+0000] {easyocr.py:80} WARNING - Neither CUDA nor MPS are available - defaulting to CPU. Note: This module is much faster with a GPU.
+[2023-12-14T00:20:48.621+0000] {base.py:73} INFO - Using connection ID 'postgres_hw2' for task execution.
+[2023-12-14T00:20:48.627+0000] {logging_mixin.py:154} INFO - url:  https://www.whosmailingwhat.com/blog/wp-content/themes/click-mag/images/logos/logo-nav.png
+[2023-12-14T00:20:50.445+0000] {logging_mixin.py:154} INFO - Progress: |--------------------------------------------------| 0.0% CompleteProgress: |████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 441.4% CompleteOCR Result:  []
+[2023-12-14T00:20:50.902+0000] {_base_client.py:952} INFO - Retrying request to /chat/completions in 0.814250 seconds
+[2023-12-14T00:20:51.905+0000] {_base_client.py:952} INFO - Retrying request to /chat/completions in 1.504648 seconds
+[2023-12-14T00:20:53.593+0000] {logging_mixin.py:154} INFO - Something went wrong. ERR:  Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+[2023-12-14T00:20:53.594+0000] {logging_mixin.py:154} INFO - url:  https://www.whosmailingwhat.com/blog/wp-content/themes/click-mag-child/images/landing-header.png
+[2023-12-14T00:21:01.009+0000] {logging_mixin.py:154} INFO - Progress: |--------------------------------------------------| 0.0% CompleteProgress: |█████████████████████████████████-----------------| 67.7% CompleteProgress: |███████████████████████████████████████████████████████████████████| 135.3% CompleteOCR Result:  ['Y', 'WHC MAILING W VHATE']
+[2023-12-14T00:21:01.243+0000] {_base_client.py:952} INFO - Retrying request to /chat/completions in 0.815114 seconds
+[2023-12-14T00:21:02.234+0000] {_base_client.py:952} INFO - Retrying request to /chat/completions in 1.770291 seconds
+[2023-12-14T00:21:04.215+0000] {logging_mixin.py:154} INFO - Something went wrong. ERR:  Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+[2023-12-14T00:21:04.216+0000] {logging_mixin.py:154} INFO - url:  https://www.whosmailingwhat.com/blog/wp-content/uploads/2021/07/explore-30000-best-direct-mail-examples.png
+[2023-12-14T00:21:06.868+0000] {local_task_job_runner.py:228} INFO - Task exited with return code -9
+[2023-12-14T00:21:06.881+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

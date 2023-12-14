@@ -1,0 +1,41 @@
+[2023-12-13T23:29:16.559+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.create_domains_table manual__2023-12-13T23:15:37.822912+00:00 [queued]>
+[2023-12-13T23:29:16.562+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.create_domains_table manual__2023-12-13T23:15:37.822912+00:00 [queued]>
+[2023-12-13T23:29:16.562+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 2
+[2023-12-13T23:29:16.568+0000] {taskinstance.py:1382} INFO - Executing <Task(PostgresOperator): create_domains_table> on 2023-12-13 23:15:37.822912+00:00
+[2023-12-13T23:29:16.576+0000] {standard_task_runner.py:57} INFO - Started process 266 to run task
+[2023-12-13T23:29:16.580+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'create_domains_table', 'manual__2023-12-13T23:15:37.822912+00:00', '--job-id', '68', '--raw', '--subdir', 'DAGS_FOLDER/my_dag.py', '--cfg-path', '/tmp/tmpr2spywoj']
+[2023-12-13T23:29:16.583+0000] {standard_task_runner.py:85} INFO - Job 68: Subtask create_domains_table
+[2023-12-13T23:29:16.623+0000] {task_command.py:416} INFO - Running <TaskInstance: my_dag.create_domains_table manual__2023-12-13T23:15:37.822912+00:00 [running]> on host dde03b621bd8
+[2023-12-13T23:29:16.661+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='my_dag' AIRFLOW_CTX_TASK_ID='create_domains_table' AIRFLOW_CTX_EXECUTION_DATE='2023-12-13T23:15:37.822912+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-13T23:15:37.822912+00:00'
+[2023-12-13T23:29:16.662+0000] {sql.py:274} INFO - Executing: 
+        CREATE TABLE IF NOT EXISTS DomainsToScrape (
+            id  SERIAL PRIMARY KEY,
+            domain VARCHAR(128) UNIQUE,
+            scrapped BOOlEAN
+        );
+        
+[2023-12-13T23:29:16.666+0000] {base.py:73} INFO - Using connection ID 'postgres_hw2' for task execution.
+[2023-12-13T23:29:16.670+0000] {base.py:73} INFO - Using connection ID 'postgres_hw2' for task execution.
+[2023-12-13T23:29:16.671+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/operators/sql.py", line 280, in execute
+    output = hook.run(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/hooks/sql.py", line 385, in run
+    with closing(self.get_conn()) as conn:
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/postgres/hooks/postgres.py", line 155, in get_conn
+    self.conn = psycopg2.connect(**conn_args)
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (::1), port 5433 failed: Cannot assign requested address
+	Is the server running on that host and accepting TCP/IP connections?
+
+[2023-12-13T23:29:16.675+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=my_dag, task_id=create_domains_table, execution_date=20231213T231537, start_date=20231213T232916, end_date=20231213T232916
+[2023-12-13T23:29:16.680+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 68 for task create_domains_table (connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (::1), port 5433 failed: Cannot assign requested address
+	Is the server running on that host and accepting TCP/IP connections?
+; 266)
+[2023-12-13T23:29:16.712+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-12-13T23:29:16.724+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,39 @@
+[2023-12-13T23:36:52.870+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.get_domains_info manual__2023-12-13T23:11:13.291775+00:00 [queued]>
+[2023-12-13T23:36:52.877+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.get_domains_info manual__2023-12-13T23:11:13.291775+00:00 [queued]>
+[2023-12-13T23:36:52.878+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-12-13T23:36:52.894+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): get_domains_info> on 2023-12-13 23:11:13.291775+00:00
+[2023-12-13T23:36:52.904+0000] {standard_task_runner.py:57} INFO - Started process 584 to run task
+[2023-12-13T23:36:52.967+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'get_domains_info', 'manual__2023-12-13T23:11:13.291775+00:00', '--job-id', '85', '--raw', '--subdir', 'DAGS_FOLDER/my_dag.py', '--cfg-path', '/tmp/tmpauktigic']
+[2023-12-13T23:36:52.981+0000] {standard_task_runner.py:85} INFO - Job 85: Subtask get_domains_info
+[2023-12-13T23:36:53.251+0000] {task_command.py:416} INFO - Running <TaskInstance: my_dag.get_domains_info manual__2023-12-13T23:11:13.291775+00:00 [running]> on host dde03b621bd8
+[2023-12-13T23:36:53.550+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='my_dag' AIRFLOW_CTX_TASK_ID='get_domains_info' AIRFLOW_CTX_EXECUTION_DATE='2023-12-13T23:11:13.291775+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-13T23:11:13.291775+00:00'
+[2023-12-13T23:36:53.586+0000] {base.py:73} INFO - Using connection ID 'postgres_hw2' for task execution.
+[2023-12-13T23:36:53.587+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/my_dag.py", line 115, in get_domains_info
+    records = postgres_hook.get_records(sql=select_query)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/hooks/sql.py", line 255, in get_records
+    return self.run(sql=sql, parameters=parameters, handler=fetch_all_handler)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/hooks/sql.py", line 385, in run
+    with closing(self.get_conn()) as conn:
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/postgres/hooks/postgres.py", line 155, in get_conn
+    self.conn = psycopg2.connect(**conn_args)
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (::1), port 5433 failed: Cannot assign requested address
+	Is the server running on that host and accepting TCP/IP connections?
+
+[2023-12-13T23:36:53.644+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=my_dag, task_id=get_domains_info, execution_date=20231213T231113, start_date=20231213T233652, end_date=20231213T233653
+[2023-12-13T23:36:53.679+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 85 for task get_domains_info (connection to server at "localhost" (127.0.0.1), port 5433 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (::1), port 5433 failed: Cannot assign requested address
+	Is the server running on that host and accepting TCP/IP connections?
+; 584)
+[2023-12-13T23:36:53.740+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-12-13T23:36:53.783+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

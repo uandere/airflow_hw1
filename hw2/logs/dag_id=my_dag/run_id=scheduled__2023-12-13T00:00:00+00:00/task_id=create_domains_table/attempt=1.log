@@ -1,0 +1,35 @@
+[2023-12-14T00:13:08.115+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.create_domains_table scheduled__2023-12-13T00:00:00+00:00 [queued]>
+[2023-12-14T00:13:08.119+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.create_domains_table scheduled__2023-12-13T00:00:00+00:00 [queued]>
+[2023-12-14T00:13:08.119+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-12-14T00:13:08.124+0000] {taskinstance.py:1382} INFO - Executing <Task(PostgresOperator): create_domains_table> on 2023-12-13 00:00:00+00:00
+[2023-12-14T00:13:08.128+0000] {standard_task_runner.py:57} INFO - Started process 61 to run task
+[2023-12-14T00:13:08.130+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'create_domains_table', 'scheduled__2023-12-13T00:00:00+00:00', '--job-id', '101', '--raw', '--subdir', 'DAGS_FOLDER/my_dag.py', '--cfg-path', '/tmp/tmpr4bkby65']
+[2023-12-14T00:13:08.133+0000] {standard_task_runner.py:85} INFO - Job 101: Subtask create_domains_table
+[2023-12-14T00:13:08.160+0000] {task_command.py:416} INFO - Running <TaskInstance: my_dag.create_domains_table scheduled__2023-12-13T00:00:00+00:00 [running]> on host dde03b621bd8
+[2023-12-14T00:13:08.193+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='my_dag' AIRFLOW_CTX_TASK_ID='create_domains_table' AIRFLOW_CTX_EXECUTION_DATE='2023-12-13T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-12-13T00:00:00+00:00'
+[2023-12-14T00:13:08.194+0000] {sql.py:274} INFO - Executing: 
+        CREATE TABLE IF NOT EXISTS DomainsToScrape (
+            id  SERIAL PRIMARY KEY,
+            domain VARCHAR(128) UNIQUE,
+            scrapped BOOlEAN
+        );
+        
+[2023-12-14T00:13:08.198+0000] {base.py:73} INFO - Using connection ID 'postgres_hw2' for task execution.
+[2023-12-14T00:13:08.202+0000] {base.py:73} INFO - Using connection ID 'postgres_hw2' for task execution.
+[2023-12-14T00:13:08.234+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/operators/sql.py", line 280, in execute
+    output = hook.run(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/hooks/sql.py", line 385, in run
+    with closing(self.get_conn()) as conn:
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/postgres/hooks/postgres.py", line 155, in get_conn
+    self.conn = psycopg2.connect(**conn_args)
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "host.docker.internal" (192.168.65.254), port 5432 failed: FATAL:  password authentication failed for user "***"
+
+[2023-12-14T00:13:08.241+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=my_dag, task_id=create_domains_table, execution_date=20231213T000000, start_date=20231214T001308, end_date=20231214T001308
+[2023-12-14T00:13:08.246+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 101 for task create_domains_table (connection to server at "host.docker.internal" (192.168.65.254), port 5432 failed: FATAL:  password authentication failed for user "***"
+; 61)
+[2023-12-14T00:13:08.263+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-12-14T00:13:08.276+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
